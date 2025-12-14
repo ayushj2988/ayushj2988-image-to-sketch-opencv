@@ -18,7 +18,7 @@ if img is None:
 
 # Convert to sketch
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-blur = cv2.GaussianBlur(gray, (21, 21), 0)
+blur = cv2.GaussianBlur(gray, (31, 31), 0)
 sketch = cv2.divide(gray, blur, scale=256)
 
 # Output path
