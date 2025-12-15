@@ -1,4 +1,5 @@
-*.jpg
-*.png
 __pycache__/
-
+*.pyc
+*.png
+*.jpg
+.env

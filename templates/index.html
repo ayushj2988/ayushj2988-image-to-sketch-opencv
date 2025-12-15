@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image to Sketch Converter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#25f478",
+            backgroundLight: "#f5f8f7",
+            backgroundDark: "#102217",
+            surfaceDark: "#162e21",
+            surfaceLight: "#ffffff"
+          },
+          fontFamily: {
+            display: ["Spline Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-backgroundLight dark:bg-backgroundDark text-slate-900 dark:text-white min-h-screen">
+
+<div class="max-w-md mx-auto px-4 py-10 space-y-6">
+
+
+
+  <!-- Title -->
+  <div class="text-center">
+    <h1 class="text-4xl font-bold">
+      Image <span class="text-primary">→</span> Sketch
+    </h1>
+    <p class="text-slate-500 dark:text-slate-400 mt-2">
+      Turn photos into pencil sketches
+    </p>
+  </div>
+
+  <!-- Hidden file input -->
+  <input id="imageInput" type="file" accept="image/*" class="hidden"/>
+
+  <!-- Upload box -->
+  <div id="uploadBox"
+       class="cursor-pointer border-2 border-dashed border-primary/40 rounded-3xl p-8 text-center
+              bg-surfaceLight dark:bg-surfaceDark hover:border-primary transition">
+    <div class="flex flex-col items-center gap-3">
+      <span class="material-symbols-outlined text-primary text-5xl">
+        add_photo_alternate
+      </span>
+      <p class="font-bold">Upload Photo</p>
+      <p class="text-sm text-slate-500 dark:text-slate-400">JPG or PNG</p>
+    </div>
+  </div>
+
+  <!-- Convert button -->
+  <button id="convertBtn"
+          class="w-full h-14 rounded-full bg-primary text-black font-bold text-lg
+                 hover:opacity-90 active:scale-95 transition shadow-lg">
+    Create Sketch
+  </button>
+
+  <!-- Status -->
+  <p id="statusText" class="text-center text-sm text-slate-500"></p>
+
+  <!-- Preview + Result -->
+  <div class="grid grid-cols-2 gap-4 mt-4">
+
+    <div class="rounded-2xl overflow-hidden bg-surfaceLight dark:bg-surfaceDark">
+      <p class="text-xs font-bold p-2">Preview</p>
+      <img id="previewImg" class="hidden w-full object-cover"/>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden bg-surfaceLight dark:bg-surfaceDark">
+      <p class="text-xs font-bold p-2">Result</p>
+      <img id="resultImg" class="hidden w-full object-cover"/>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ✅ External JS -->
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
